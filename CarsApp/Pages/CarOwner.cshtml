@@ -1,0 +1,17 @@
+﻿@page
+@model CarsApp.Pages.CarOwner.CarOwnerModel
+@{
+    ViewData["Title"] = "Owner by car brand";
+}
+
+<h2>Owner by car brand</h2>
+
+@foreach(var brand in Model.BrandOwner)
+{
+    <ul><b>@Html.DisplayFor(x => brand.Brand)</b></ul>
+
+    foreach(var owner in brand.Owners)
+    {
+        <li>@Html.DisplayFor(y => owner)</li>
+    }
+}

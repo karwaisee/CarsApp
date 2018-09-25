@@ -14,8 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CarsApp.Models\CarsApp.Models.csproj" />
-    <ProjectReference Include="..\CarsApp.Util\CarsApp.Util.csproj" />
   </ItemGroup>
 
 </Project>
