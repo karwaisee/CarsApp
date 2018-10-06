@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CarsApp.DAL\CarsApp.DAL.csproj" />
     <ProjectReference Include="..\CarsApp.Models\CarsApp.Models.csproj" />
   </ItemGroup>
 

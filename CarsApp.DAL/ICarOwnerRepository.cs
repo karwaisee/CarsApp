@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using CarsApp.Models;
 
-namespace CarsApp.Services
+namespace CarsApp.DAL
 {
-    public interface ICarService
+    public interface ICarOwnerRepository
     {
         IEnumerable<CarOwner> GetCarOwners();
     }

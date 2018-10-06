@@ -24,7 +24,7 @@ namespace CarsApp.MockApi.Controllers
         [HttpGet]
         public IEnumerable<CarOwner> Get()
         {
-            return _carService.GetAllCarOwners();
+            return _carService.GetCarOwners();
         }
 
 
