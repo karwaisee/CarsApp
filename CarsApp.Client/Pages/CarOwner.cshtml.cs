@@ -4,9 +4,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using CarsApp.Models;
 using CarsApp.Services;
 using CarsApp.Util;
-using System;
 
-namespace CarsApp.Pages.CarOwner
+namespace CarsApp.Client.Pages.CarOwner
 {
     public class CarOwnerModel : PageModel
     {

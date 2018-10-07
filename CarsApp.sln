@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarsApp", "CarsApp\CarsApp.csproj", "{003BE0AC-D706-4BD0-9275-5A1F3A7CA869}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarsApp.Client", "CarsApp.Client\CarsApp.Client.csproj", "{003BE0AC-D706-4BD0-9275-5A1F3A7CA869}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarsApp.Util", "CarsApp.Util\CarsApp.Util.csproj", "{0DE0B576-6006-41C2-B4BD-8B778B53ABDC}"
 EndProject
