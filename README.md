@@ -5,11 +5,13 @@ PRE-REQUISITE:
 - MS Visual Studio 2017 (Community edition is OK)
 
 SOLUTION OVERVIEW:
-- CarsApp - ASP.NET core Razor app
+- CarsApp.Client - Client app (ASP.NET core Razor)
+- CarsApp.Client.ApiClient - Business logic for client app
+- CarsApp.Client.ApiClient.Test - Unit test for client app business logic
 - CarsApp.Models - Data model
-- CarsApp.Util - Utility helper class
-- CarsApp.Util.Test - Unit test for utility helper class
+- CarsApp.DAL - Data access layer
 - CarsApp.MockApi - Mock Api of Kloud hosted Api
+- CarsApp.Services - Mock Api service layer
 
 HOW TO BUILD:
 1) Open CarsApp/CarsApp.sln
