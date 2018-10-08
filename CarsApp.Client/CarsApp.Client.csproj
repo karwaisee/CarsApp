@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CarsApp.Client.ApiClient\CarsApp.Client.ApiClient.csproj" />
     <ProjectReference Include="..\CarsApp.Models\CarsApp.Models.csproj" />
-    <ProjectReference Include="..\CarsApp.Util\CarsApp.Util.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,24 +2,18 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using CarsApp.Models;
-using CarsApp.Services;
-using CarsApp.Util;
+using CarsApp.Client.ApiClient;
 
 namespace CarsApp.Client.Pages.CarOwner
 {
     public class CarOwnerModel : PageModel
     {
-        public IEnumerable<CarInfo> Car { get; set; }
         public IEnumerable<BrandOwner> BrandOwner { get; set; }
-        private ICarService _carService;
+        private ICarServiceClient _carServiceClient;
 
-        public CarOwnerModel()
+        public CarOwnerModel(ICarServiceClient carServiceClient)
         {
-            // Kloud coding test api
-            _carService = new CarService("http://codingtest.kloud.com.au/api/cars/");
-
-            // Mock api hosted locally
-            _carService = new CarService("http://localhost:15558/api/cars");
+            _carServiceClient = carServiceClient;
         }
 
         public async Task OnGetAsync()
@@ -28,7 +22,7 @@ namespace CarsApp.Client.Pages.CarOwner
 
             try
             {
-                carOwners = await _carService.GetCarOwners();
+                carOwners = await _carServiceClient.GetCarOwners();
             }
             catch
             {
@@ -38,14 +32,14 @@ namespace CarsApp.Client.Pages.CarOwner
             }
 
             // Remove car owner without name
-            carOwners = CarUtil.FilterCarOwnerWithoutName(carOwners);
+            carOwners = _carServiceClient.FilterCarOwnerWithoutName(carOwners);
 
             // Transform car owners resultset into list of cars
-            IEnumerable<Models.CarInfo> cars = CarUtil.ConvertToCarsList(carOwners);
+            IEnumerable<CarInfo> cars = _carServiceClient.ConvertToCarsList(carOwners);
             
             // Transform cars list to group by Brand, Dedupe owner name within group
             // ASSUME: colour empty is valid
-            BrandOwner = CarUtil.ConvertToBrandOwnerDedupe(cars);
+            BrandOwner = _carServiceClient.ConvertToBrandOwnerDedupe(cars);
         }
     }
 }

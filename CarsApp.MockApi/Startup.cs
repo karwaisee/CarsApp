@@ -21,7 +21,7 @@ namespace CarsApp.MockApi
         {
             services.AddMvc();
             services.AddScoped<ICarService, CarService>();
-            services.AddScoped<ICarOwnerRepository, MockCarOwnerRepository>();
+            services.AddSingleton<ICarOwnerRepository, MockCarOwnerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

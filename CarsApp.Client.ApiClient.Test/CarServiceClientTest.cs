@@ -1,23 +1,31 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using CarsApp.Models;
-using CarsApp.Util;
+using CarsApp.Client.ApiClient;
 
 namespace CarsApp.Util.Test
 {
     [TestClass]
-    public class CarUtilTest
+    public class CarServiceClientTest
     {
+        private readonly ICarServiceClient _carServiceClient;
+
+        public CarServiceClientTest()
+        {
+            _carServiceClient = new CarServiceClient(new HttpClient());
+        }
+
         [TestMethod]
         public void TestFilterCarOwnerWithoutName_NullOrEmpty()
         {
             List<CarOwner> emptyCarOwner = new List<CarOwner>();
 
-            var result = CarUtil.FilterCarOwnerWithoutName(null);
+            var result = _carServiceClient.FilterCarOwnerWithoutName(null);
             Assert.IsNull(result);
 
-            result = CarUtil.FilterCarOwnerWithoutName(emptyCarOwner);
+            result = _carServiceClient.FilterCarOwnerWithoutName(emptyCarOwner);
             Assert.AreEqual(0, result.Count());
         }
 
@@ -26,7 +34,7 @@ namespace CarsApp.Util.Test
         {
             List<CarOwner> carOwners = SampleCarOwners_TwoValidTwoInvalid();
 
-            var result = CarUtil.FilterCarOwnerWithoutName(carOwners);
+            var result = _carServiceClient.FilterCarOwnerWithoutName(carOwners);
             Assert.AreEqual(2, result.Count());
             Assert.AreNotEqual(result.Count(), carOwners.Count);
         }
@@ -36,10 +44,10 @@ namespace CarsApp.Util.Test
         {
             List<CarOwner> emptyCarOwner = new List<CarOwner>();
 
-            var result = CarUtil.ConvertToCarsList(null);
+            var result = _carServiceClient.ConvertToCarsList(null);
             Assert.IsNull(result);
 
-            result = CarUtil.ConvertToCarsList(emptyCarOwner);
+            result = _carServiceClient.ConvertToCarsList(emptyCarOwner);
             Assert.AreEqual(0, result.Count());
         }
 
@@ -55,8 +63,8 @@ namespace CarsApp.Util.Test
             string colour = oriCar.Colour;
 
             // Process
-            var result = CarUtil.ConvertToCarsList(carOwners);
-            
+            var result = _carServiceClient.ConvertToCarsList(carOwners);
+
             // Assert cars owner property is set and other properties remain unchanged
             foreach (var car in result)
             {
@@ -74,10 +82,10 @@ namespace CarsApp.Util.Test
         {
             List<CarOwner> emptyCarOwner = new List<CarOwner>();
 
-            var result = CarUtil.ConvertToCarsList(null);
+            var result = _carServiceClient.ConvertToCarsList(null);
             Assert.IsNull(result);
 
-            result = CarUtil.ConvertToCarsList(emptyCarOwner);
+            result = _carServiceClient.ConvertToCarsList(emptyCarOwner);
             Assert.AreEqual(0, result.Count());
         }
 
@@ -88,7 +96,7 @@ namespace CarsApp.Util.Test
             List<CarInfo> cars = SampleCarsWithOwner();
 
             // Process
-            var result = CarUtil.ConvertToBrandOwnerDedupe(cars);
+            var result = _carServiceClient.ConvertToBrandOwnerDedupe(cars);
 
             // Assert sorting
             var resultList = result.ToList();
