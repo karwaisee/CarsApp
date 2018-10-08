@@ -21,7 +21,8 @@ namespace CarsApp.Client
             {
                 options.Conventions.AddPageRoute("/CarOwner", "");
             });
-            services.AddSingleton<HttpClient, CarHttpClient>();
+            services.AddSingleton<HttpClient, HttpClient>();
+            services.AddSingleton<ICarHttpClient, CarHttpClient>();
             services.AddScoped<ICarServiceClient, CarServiceClient>();
         }
 

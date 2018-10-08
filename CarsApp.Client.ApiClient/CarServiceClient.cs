@@ -1,25 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using CarsApp.Models;
 
 namespace CarsApp.Client.ApiClient
 {
     public class CarServiceClient : ICarServiceClient
     {
-        private readonly HttpClient _httpClient;
+        private readonly ICarHttpClient _carHttpClient;
 
-        public CarServiceClient(HttpClient httpClient)
+        public CarServiceClient(ICarHttpClient carHttpClient)
         {
-            _httpClient = httpClient;
+            _carHttpClient = carHttpClient;
         }
 
         public async Task<IEnumerable<CarOwner>> GetCarOwners()
         {
-            var response = await _httpClient.GetStringAsync("api/cars");
-            return JsonConvert.DeserializeObject<IEnumerable<CarOwner>>(response);
+            return await _carHttpClient.GetCarOwners();
         }
 
         /// <summary>

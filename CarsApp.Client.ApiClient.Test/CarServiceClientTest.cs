@@ -14,7 +14,10 @@ namespace CarsApp.Util.Test
 
         public CarServiceClientTest()
         {
-            _carServiceClient = new CarServiceClient(new HttpClient());
+            // Mock here later
+            ICarHttpClient carHttpClient = new CarHttpClient(new HttpClient());
+
+            _carServiceClient = new CarServiceClient(carHttpClient);
         }
 
         [TestMethod]
