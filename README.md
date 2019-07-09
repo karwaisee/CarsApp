@@ -1,5 +1,5 @@
 # CarsApp
-Cars app for Kloud coding challenge
+Cars app
 
 PRE-REQUISITE:
 - MS Visual Studio 2017 (Community edition is OK)
